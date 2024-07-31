@@ -11,7 +11,7 @@ import Navbar from './components/Navbar';
 import SmartNotes from './pages/SmartNotes';
 import Profile from './pages/Profile';
 import EditNote from './pages/EditNote';
-import { baseURL } from './constant';
+
 
 //axios configuration===============
 
@@ -21,7 +21,7 @@ function App() {
   const token = useSelector(state => state.user.token);
 
   //Configuration Axios-------------------
-  axios.defaults.baseURL = baseURL;
+  axios.defaults.baseURL = process.env.REACT_APP_BASEURL;
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   axios.defaults.withCredentials = true;
   //--------------------------------------
