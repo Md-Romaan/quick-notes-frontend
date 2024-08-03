@@ -1,9 +1,11 @@
 ### Frontend (React.js, Redux Toolkit, Daisy UI, Tailwind CSS)
 
-markdown
+
 # Quick Notes App - Frontend
 
 This is the frontend repository for the Quick Notes App. It is built using React.js, Redux Toolkit, Daisy UI, and Tailwind CSS. This service provides the user interface for the application, allowing users to register, login, and manage their notes.
+
+[Backend Link](https://github.com/Md-Romaan/quick-notes-backend)
 
 ## Table of Contents
 
