@@ -66,7 +66,7 @@ const Login = () => {
                     </form>
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Not a member?
-                        <NavLink to={"/"} className="leading-6 text-indigo-600 hover:text-indigo-500 pl-1 font-bold">Sign up</NavLink>
+                        <NavLink to={"/register"} className="leading-6 text-indigo-600 hover:text-indigo-500 pl-1 font-bold">Sign up</NavLink>
                     </p>
                 </div>
 

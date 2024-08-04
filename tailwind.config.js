@@ -9,7 +9,11 @@ export default {
   theme: {
     extend: {
 
+      fontFamily: {
+        "edu": ["Edu AU VIC WA NT Hand"],
+      }
     },
+
     screens: {
       "mobile": { "max": "425px" },
 

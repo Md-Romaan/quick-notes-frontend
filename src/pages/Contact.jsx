@@ -1,13 +1,11 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-
 const Contact = () => {
+
     return (
         <>
-            
             <div className="flex items-center justify-center p-12">
                 <div className="mx-auto w-full max-w-[550px]">
-                    <form action="https://formbold.com/s/FORM_ID" method="POST">
+                    <form>
                         <div className="mb-5">
                             <label htmlFor="name" className="mb-3 block text-base font-medium text-[#07074D]">
                                 Full Name

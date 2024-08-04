@@ -11,7 +11,9 @@ import Navbar from './components/Navbar';
 import SmartNotes from './pages/SmartNotes';
 import Profile from './pages/Profile';
 import EditNote from './pages/EditNote';
-
+import Home from './pages/Home';
+import Footer from './components/Footer';
+import About from './pages/About';
 
 //axios configuration===============
 
@@ -27,14 +29,18 @@ function App() {
   //--------------------------------------
 
 
+
   return (
     <>
       <BrowserRouter>
         <Navbar />
+
         <Routes>
-          <Route path='/' element={<Register />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/about' element={<About />} />
 
           {/* protected routes-------------------------------------- */}
           <Route path='/dashboard' element={<Protected><Dashboard /></Protected>} />
@@ -42,10 +48,11 @@ function App() {
           <Route path='/profile' element={<Protected><Profile /></Protected>} />
           <Route path='/edit-note/:id' element={<Protected><EditNote /></Protected>} />
 
-
-
           <Route path='*' element={<h1>Resource not found</h1>} />
         </Routes>
+
+        <Footer />
+
       </BrowserRouter>
     </>
   );

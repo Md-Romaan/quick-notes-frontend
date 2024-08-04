@@ -53,15 +53,15 @@ const Register = () => {
                     <h1 className='text-center font-bold text-xl mb-4'>Signup</h1>
                     <form className="space-y-5 flex flex-col justify-center items-center">
                         <div className=''>
-                            <input type="text" name="name" id="name" className='border border-gray-400 rounded-md p-1 w-[50vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='Name' />
+                            <input type="text" name="name" id="name" className='border border-gray-400 rounded-md p-3 w-[50vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='Name' />
                         </div>
 
                         <div className=''>
-                            <input type="email" name="email" id="email" className='border border-gray-400 rounded-md p-1 w-[50vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='Email' />
+                            <input type="email" name="email" id="email" className='border border-gray-400 rounded-md p-3 w-[50vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='Email' />
                         </div>
 
                         <div className=''>
-                            <input type="password" name="password" id="password" className='border border-gray-400 rounded-md p-1 w-[50vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='password' />
+                            <input type="password" name="password" id="password" className='border border-gray-400 rounded-md p-3 w-[50vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='password' />
                         </div>
 
                         <button type='submit' className='bg-indigo-600  p-2 rounded-md text-white hover:bg-indigo-500 pl-3 fontb w-[50vw]  sm:w-[40vw] md:w-[30vw] lg:w-[25vw]'>

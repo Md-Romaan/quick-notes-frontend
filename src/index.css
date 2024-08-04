@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+
+}
+
+@layer utilities {
+
+    .skill-heading {
+        @apply text-lg font-bold bg-blue-900 py-2 px-3 rounded-lg text-white;
+    }
+
+    .skill{
+        @apply text-lg bg-green-600 py-1 px-2 rounded-lg text-white font-bold border-2 border-black;
+    }
+
+}

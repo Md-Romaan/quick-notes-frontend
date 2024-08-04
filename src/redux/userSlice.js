@@ -17,11 +17,10 @@ export const userSlice = createSlice({
         logout: (state, action) => {
             state.user = {};
             state.token = "";
-        }
-
+        },
 
     }
 })
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, showLoading, hideLoading } = userSlice.actions;
 export default userSlice.reducer;

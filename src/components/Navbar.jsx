@@ -19,7 +19,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="navbar  bg-blue-200">
+            <div className="navbar sticky top-0  bg-blue-200">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -36,27 +36,32 @@ const Navbar = () => {
                                     d="M4 6h16M4 12h8m-8 6h16" />
                             </svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-4 shadow-lg space-y-3 text-2xl font-bold">
 
                             {/* Mobile menus Navbar------------------ */}
+
+                            <li><NavLink to={"/"} className="py-3">Home</NavLink></li>
+                            <li><NavLink to={"/about"} className="py-3">About</NavLink></li>
+
+
                             {
-                                token ? <li><NavLink to={"/dashboard"}>Dashboard</NavLink></li> :
-                                    <li><NavLink to={"/login"}>Login</NavLink></li>
+                                token ? <li><NavLink to={"/dashboard"} className="py-3">Dashboard</NavLink></li> :
+                                    <li><NavLink to={"/login"} className="py-3">Login</NavLink></li>
                             }
 
                             {
-                                !token && <li><NavLink to={"/"}>Sign Up</NavLink></li>
+                                !token && <li><NavLink to={"/register"} className="py-3">Sign Up</NavLink></li>
                             }
 
-                            <li><NavLink to={"/contact"}>Contact</NavLink></li>
+                            <li><NavLink to={"/contact"} className="py-3">Contact</NavLink></li>
 
                             {
-                                token && <li><Link onClick={handleLogout}>Logout</Link></li>
+                                token && <li><Link onClick={handleLogout} className="py-3">Logout</Link></li>
                             }
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl font-bold text-blue-950">M.R</a>
+                    <a className="btn btn-ghost text-xl font-extrabold text-blue-700 font-edu">M.R</a>
                 </div>
 
                 <div className="navbar-center hidden lg:flex">
@@ -64,13 +69,17 @@ const Navbar = () => {
 
                         {/* Desktop menus Navbar---------------------------------- */}
 
+                        <li><NavLink to={"/"}>Home</NavLink></li>
+
+                        <li><NavLink to={"/about"}>About</NavLink></li>
+
                         {
                             token ? <li><NavLink to={"/dashboard"}>Dashboard</NavLink></li> :
                                 <li><NavLink to={"/login"}>Login</NavLink></li>
                         }
 
                         {
-                            !token && <li><NavLink to={"/"}>Sign Up</NavLink></li>
+                            !token && <li><NavLink to={"/register"}>Sign Up</NavLink></li>
                         }
 
                         <li><NavLink to={"/contact"}>Contact</NavLink></li>

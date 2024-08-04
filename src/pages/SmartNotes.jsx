@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from "react-toastify"
 
-
 const SmartNotes = () => {
 
     const [notes, setNotes] = useState();
@@ -16,7 +15,6 @@ const SmartNotes = () => {
             if (response.data.success) {
                 setNotes(response.data.notes);
             }
-
 
         } catch (error) {
             console.log(error);
@@ -73,17 +71,18 @@ const SmartNotes = () => {
         }
     }
 
+
     return (
         <>
             <div className='flex flex-row gap-1'>
 
                 <Sidebar />
-                <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-auto mt-5'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-4 mt-5'>
                     {
                         notes?.map((note) => {
                             return (
                                 <>
-                                    <div className="card bg-base-100  shadow-xl">
+                                    <div className="card bg-base-100 shadow-xl h-[300px] overflow-scroll">
                                         <div className="card-body">
                                             <h2 className="card-title">{note.title}</h2>
                                             <p>{note.description}</p>
@@ -122,6 +121,7 @@ const SmartNotes = () => {
 
                 </div>
             </div>
+
         </>
     )
 }
