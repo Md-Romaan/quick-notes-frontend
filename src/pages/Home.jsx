@@ -14,8 +14,7 @@ const Home = () => {
     const backEndSkills = ["Java", "J2EE", "Spring Boot", "Hibernate", "Python", "Node JS", "Express Js"];
     const dataBaseSkills = ["SQL", "MySQL", "MongoDB"];
     const versionControl = ["Git", "GitHub"];
-
-    console.log(hero);
+    
     return (
         <>
             {/* row 1------- */}

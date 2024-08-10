@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Loader from '../components/Loader'
 
 
 
@@ -12,6 +13,7 @@ const Register = () => {
     const token = useSelector(state => state.user.token);
 
     const navigate = useNavigate();
+    const [load, setload] = useState();
 
     useEffect(() => {
         if (token) {
@@ -32,39 +34,44 @@ const Register = () => {
         }
 
         try {
+            setload(true);
             const response = await axios.post("/user/register", data);
+            setload(false);
             if (response.data.success) {
                 toast.success(response.data.message);
                 navigate("/login");
             }
 
         } catch (error) {
+            setload(false);
             console.log(error);
             toast.error(error.response.data.message)
         }
     }
 
+    if (load === true) return <Loader />
+
 
     return (
         <>
-        
+
             <div onSubmit={handleSubmit} className='w-full h-[100vh] bg-blue-500 flex justify-center items-center'>
                 <div className="border bg-white p-7 rounded-xl">
                     <h1 className='text-center font-bold text-xl mb-4'>Signup</h1>
                     <form className="space-y-5 flex flex-col justify-center items-center">
                         <div className=''>
-                            <input type="text" name="name" id="name" className='border border-gray-400 rounded-md p-3 w-[50vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='Name' />
+                            <input type="text" name="name" id="name" className='border border-gray-400 rounded-md p-3 w-[70vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='Name' />
                         </div>
 
                         <div className=''>
-                            <input type="email" name="email" id="email" className='border border-gray-400 rounded-md p-3 w-[50vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='Email' />
+                            <input type="email" name="email" id="email" className='border border-gray-400 rounded-md p-3 w-[70vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='Email' />
                         </div>
 
                         <div className=''>
-                            <input type="password" name="password" id="password" className='border border-gray-400 rounded-md p-3 w-[50vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='password' />
+                            <input type="password" name="password" id="password" className='border border-gray-400 rounded-md p-3 w-[70vw] pl-3 sm:w-[40vw] md:w-[30vw] lg:w-[25vw]' placeholder='password' />
                         </div>
 
-                        <button type='submit' className='bg-indigo-600  p-2 rounded-md text-white hover:bg-indigo-500 pl-3 fontb w-[50vw]  sm:w-[40vw] md:w-[30vw] lg:w-[25vw]'>
+                        <button type='submit' className='bg-indigo-600  p-2 rounded-md text-white hover:bg-indigo-500 pl-3 fontb w-[70vw]  sm:w-[40vw] md:w-[30vw] lg:w-[25vw]'>
                             Signup
                         </button>
 

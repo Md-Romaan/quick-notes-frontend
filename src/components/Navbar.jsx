@@ -19,7 +19,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="navbar sticky top-0  bg-blue-200">
+            <div className="navbar sticky top-0 z-10 bg-blue-200">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -61,7 +61,7 @@ const Navbar = () => {
 
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl font-extrabold text-blue-700 font-edu">M.R</a>
+                    <NavLink to={"/"} className="btn btn-ghost text-xl font-extrabold text-blue-700 font-edu border border-blue-700">M.R</NavLink>
                 </div>
 
                 <div className="navbar-center hidden lg:flex">

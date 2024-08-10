@@ -1,10 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 const About = () => {
 
     const para1 = "This is just a simple portfolio, which has the other features like, Register your account to become a member, login to your account and also it comes with some simple feature like you can make your notes and it will be saved with that account, you can access those notes from anywhere just by login."
     const para2 = "In the future, adding some more features like everyone who has their account can post blogs, and many more features.";
+
 
     return (
         <>

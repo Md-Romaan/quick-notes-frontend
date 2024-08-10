@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { logout } from '../redux/userSlice';
+import Loader from '../components/Loader';
 
 const Protected = ({ children }) => {
 
@@ -12,6 +13,7 @@ const Protected = ({ children }) => {
 
     const token = useSelector(state => state.user.token);
     const [verified, setVerified] = useState();
+    const [load, setLoad] = useState();
 
     useEffect(() => {
         if (!token) {
@@ -26,9 +28,9 @@ const Protected = ({ children }) => {
 
     const verifyToken = async () => {
         try {
-
+            setLoad(true);
             const response = await axios.post("/user/verify-token", null);
-
+            setLoad(false);
             if (response.data.success) {
                 setVerified("yes");
             }
@@ -36,6 +38,7 @@ const Protected = ({ children }) => {
                 setVerified("no");
             }
         } catch (error) {
+            setLoad(false);
             setVerified("no");
         }
     }
@@ -49,6 +52,8 @@ const Protected = ({ children }) => {
         }
 
     }, [verified]);
+
+    if (load === true) return <Loader />
 
     if (verified === "yes") {
         return (

@@ -3,21 +3,27 @@ import Sidebar from '../components/Sidebar'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from "react-toastify"
+import Loader from '../components/Loader'
 
 const SmartNotes = () => {
 
     const [notes, setNotes] = useState();
+    const [load, setLoad] = useState(true);
 
     const getNotes = async () => {
         try {
+
+            setLoad(true);
             const response = await axios.post("/note/getNotes", null);
 
             if (response.data.success) {
                 setNotes(response.data.notes);
             }
+            setLoad(false);
 
         } catch (error) {
             console.log(error);
+            setLoad(false);
             toast.error(error.response.data.message);
         }
     }
@@ -37,15 +43,19 @@ const SmartNotes = () => {
 
         try {
 
+            setLoad(true);
             const response = await axios.post("note/addNote", data);
 
             if (response.data.success) {
                 toast.success(response.data.message);
+                setLoad(false);
                 window.location.reload();
             }
 
+
         } catch (error) {
             console.log(error);
+            setLoad(false);
             toast.error(error.response.data.message);
         }
 
@@ -53,12 +63,12 @@ const SmartNotes = () => {
 
     const handleDelete = async (id) => {
         try {
-            console.log(id);
+            setLoad(true);
             const response = await axios.delete(`/note/deleteNote/${id}`);
 
             if (response.data.success) {
                 toast.success(response.data.message);
-
+                setLoad(false);
                 setTimeout(() => {
                     window.location.reload();
                 }, 500);
@@ -66,9 +76,19 @@ const SmartNotes = () => {
             }
 
         } catch (error) {
+            setLoad(false);
             console.log(error);
             toast.error(error.response.data.message);
         }
+    }
+
+
+    if (load === true) {
+        return (
+            <>
+                <Loader />
+            </>
+        )
     }
 
 

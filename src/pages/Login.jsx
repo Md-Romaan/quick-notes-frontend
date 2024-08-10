@@ -1,15 +1,16 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
+import React, { useState } from 'react'
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux"
 import { login } from "../redux/userSlice";
 import { NavLink, useNavigate } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 const Login = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [load, setLoad] = useState();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,8 +19,9 @@ const Login = () => {
         const data = Object.fromEntries(formData.entries());
 
         try {
+            setLoad(true);
             const response = await axios.post("/user/login", data);
-
+            setLoad(false);
             if (response.data.success) {
                 toast.success(response.data.message);
                 const user = response.data.user;
@@ -28,15 +30,17 @@ const Login = () => {
                 navigate("/dashboard");
             }
         } catch (error) {
+            setLoad(false);
             console.log(error);
             toast.error(error.response.data.message);
         }
     }
 
+    if (load === true) return <Loader />
 
     return (
         <>
-            
+
             <div className="flex h-[100vh]  flex-col justify-center px-6 py-12 lg:px-8 bg-blue-500">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">Login to your account</h2>

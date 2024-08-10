@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import Loader from '../components/Loader';
 
 
 const EditNote = () => {
@@ -12,17 +13,20 @@ const EditNote = () => {
     const id = params.id;
 
     const [note, setNote] = useState();
+    const [load, setLoad] = useState();
 
     const getNoteById = async () => {
         try {
+            setLoad(true);
             const response = await axios.post(`/note/getNote/${id}`);
             if (response.data.success) {
                 setNote(response.data.note);
-
+                setLoad(false);
             }
 
         } catch (error) {
             console.log(error);
+            setLoad(false);
             toast.error(error.response.data.message);
         }
     }
@@ -44,22 +48,30 @@ const EditNote = () => {
             toast.error("Title or description required!");
             return;
         }
-
         data.id = id;
-
         try {
-
+            setLoad(true);
             const response = await axios.post("/note/updateNote", data);
 
             if (response.data.success) {
+                setLoad(false);
                 toast.success(response.data.message);
                 navigate("/notes")
             }
 
         } catch (error) {
+            setLoad(false);
             console.log(error);
             toast.error(error.response.data.message);
         }
+    }
+
+    if (load === true) {
+        return (
+            <>
+                <Loader />
+            </>
+        )
     }
 
 
